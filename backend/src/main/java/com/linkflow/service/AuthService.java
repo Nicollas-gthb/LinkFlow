@@ -5,6 +5,7 @@ import com.linkflow.dto.AuthResponse;
 import com.linkflow.dto.LoginRequest;
 import com.linkflow.dto.RegisterRequest;
 import com.linkflow.repository.UserRepository;
+import com.linkflow.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class AuthService {
                 .orElseThrow(() -> new BusinessException("Credenciais inválidas"));
 
         if(!passwordEncoder.matches(request.password(), user.getPassword())){
-            throw new BusinessExeption("Credenciais inválidas");
+            throw new BusinessException("Credenciais inválidas");
         }
 
         if(!user.getActive()){
