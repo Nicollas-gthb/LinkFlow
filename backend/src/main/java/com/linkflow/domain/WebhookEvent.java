@@ -13,8 +13,8 @@ import java.util.UUID;
 @Table(name = "webhook_events")
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class WebhookEvent {
 
     @Id
@@ -23,7 +23,7 @@ public class WebhookEvent {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "integration_id", nullable = false)
-    private Integration integrationId;
+    private Integration integration;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String payload;
