@@ -1,7 +1,7 @@
 
 create table webhook_events(
     id uuid primary key default gen_random_uuid(),
-    integration_id uuid references integrations(id),
+    integration_id uuid not null references integrations(id),
     payload text not null,
     headers text,
     status varchar(20) not null default 'PENDING',
